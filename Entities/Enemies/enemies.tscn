@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dox76m4w0tg01"]
+
+[ext_resource type="Script" path="res://Entities/Enemies/enemies.gd" id="1_esmos"]
+
+[node name="Enemies" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_esmos")
+
+[node name="NoticeArea" type="Area2D" parent="."]
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoticeArea"]
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackCooldownTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="InvinsibilityTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="Timers/AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/InvinsibilityTimer" to="." method="_on_invinsibility_timer_timeout"]

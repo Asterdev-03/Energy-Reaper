@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clr4e4sufsjsh"]
+
+[ext_resource type="PackedScene" uid="uid://bqtt6liypuey5" path="res://Entities/Guns/gun.tscn" id="1_pyfg2"]
+[ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_4nhc7"]
+
+[node name="RustyGun" instance=ExtResource("1_pyfg2")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4nhc7")
+
+[node name="Marker2D" type="Marker2D" parent="BulletPosition" index="0"]
+position = Vector2(6, -3)
+
+[node name="Marker2D2" type="Marker2D" parent="BulletPosition" index="1"]
+position = Vector2(6, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="BulletPosition" index="2"]
+position = Vector2(6, 3)

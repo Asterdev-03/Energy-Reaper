@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2v1dkw1fi0se"]
+
+[ext_resource type="PackedScene" uid="uid://dtd4kh3crjixx" path="res://Stages/stage.tscn" id="1_7tbat"]
+[ext_resource type="PackedScene" uid="uid://blp06irv52pql" path="res://Entities/Enemies/RustyBot/rusty_bot.tscn" id="2_4pjxm"]
+
+[node name="BaseCamp" instance=ExtResource("1_7tbat")]
+
+[node name="RustyBot" parent="Entites" index="0" groups=["enemies"] instance=ExtResource("2_4pjxm")]
+position = Vector2(294, 33)
+
+[node name="Player" parent="." index="4"]
+position = Vector2(113, 116)

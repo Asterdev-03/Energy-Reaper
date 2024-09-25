@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfb7hd634yfti"]
+
+[ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="1_jb63q"]
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ni776"]
+[ext_resource type="PackedScene" uid="uid://clr4e4sufsjsh" path="res://Entities/Guns/RustyGun/rusty_gun.tscn" id="3_5vx0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rh7u"]
+size = Vector2(24, 24)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 30
+script = ExtResource("1_ni776")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_jb63q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7rh7u")
+
+[node name="GunPosition" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="RustyGun" parent="GunPosition" instance=ExtResource("3_5vx0f")]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="LaserCooldownTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timers/LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]

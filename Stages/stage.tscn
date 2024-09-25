@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtd4kh3crjixx"]
+
+[ext_resource type="PackedScene" uid="uid://bfb7hd634yfti" path="res://Entities/Player/player.tscn" id="1_1uiih"]
+[ext_resource type="Script" path="res://Stages/stage.gd" id="1_qulwo"]
+
+[node name="Stage" type="Node2D"]
+script = ExtResource("1_qulwo")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Entites" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_1uiih")]
+position = Vector2(164, 90)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[connection signal="laser_fired" from="Player" to="." method="_on_player_laser_fired"]
