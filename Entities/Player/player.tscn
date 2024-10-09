@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfb7hd634yfti"]
+[gd_scene load_steps=4 format=3 uid="uid://bfb7hd634yfti"]
 
 [ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="1_jb63q"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ni776"]
-[ext_resource type="PackedScene" uid="uid://clr4e4sufsjsh" path="res://Entities/Guns/RustyGun/rusty_gun.tscn" id="3_5vx0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rh7u"]
-size = Vector2(24, 24)
+size = Vector2(28, 28)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 30
@@ -21,11 +20,21 @@ shape = SubResource("RectangleShape2D_7rh7u")
 [node name="GunPosition" type="Marker2D" parent="."]
 position = Vector2(16, 0)
 
-[node name="RustyGun" parent="GunPosition" instance=ExtResource("3_5vx0f")]
+[node name="SwordPosition" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="ShieldPosition" type="Marker2D" parent="."]
+position = Vector2(40, 0)
 
 [node name="Timers" type="Node" parent="."]
 
 [node name="LaserCooldownTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
+one_shot = true
+
+[node name="WeaponChangeTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="Timers/LaserCooldownTimer" to="." method="_on_laser_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/WeaponChangeTimer" to="." method="_on_weapon_change_timer_timeout"]
