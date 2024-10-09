@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d075by6c6eoy5"]
+
+[ext_resource type="PackedScene" uid="uid://dox76m4w0tg01" path="res://Entities/Enemies/enemies.tscn" id="1_eo1ht"]
+[ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_efb5n"]
+[ext_resource type="Script" path="res://Entities/Enemies/SlasherBot/slasher_bot.gd" id="2_ht5sh"]
+[ext_resource type="PackedScene" uid="uid://d06dl32i5lpsh" path="res://Entities/Swords/RustySword/rusty_sword.tscn" id="3_f8hmu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufttb"]
+radius = 188.86
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bc7x"]
+radius = 42.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2moq"]
+size = Vector2(26, 26)
+
+[node name="SlasherBot" instance=ExtResource("1_eo1ht")]
+script = ExtResource("2_ht5sh")
+
+[node name="NoticeArea" parent="." index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="NoticeArea" index="0"]
+shape = SubResource("CircleShape2D_ufttb")
+
+[node name="AttackArea" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_8bc7x")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_o2moq")
+
+[node name="Sprite2D" parent="." index="3"]
+modulate = Color(0.140447, 0.140447, 0.140447, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_efb5n")
+
+[node name="RustySword" parent="." index="5" instance=ExtResource("3_f8hmu")]
+position = Vector2(16, 0)

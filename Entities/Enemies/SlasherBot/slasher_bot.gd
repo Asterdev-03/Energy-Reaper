@@ -1,11 +1,11 @@
 extends Enemies
 
-var attack_radius: float
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	health = 100
-	speed = 50
-	attack_radius = $AttackArea/CollisionShape2D.shape.radius - 25
+	speed = 100
+
 
 
 func _process(_delta):
@@ -14,14 +14,12 @@ func _process(_delta):
 		
 		var player_direction: Vector2 = (GameManager.player_position - position).normalized()
 		
-		velocity = player_direction * speed * int(is_player_nearby and position.distance_to(GameManager.player_position) > attack_radius)
+		velocity = player_direction * speed * int(is_player_nearby)
 		
 		move_and_slide()
 		
 		if not on_cooldown and can_attack:
-			$RustyGun.on_shoot(player_direction)
+			$RustySword.on_slash()
 			
 			on_cooldown = true
 			$Timers/AttackCooldownTimer.start()
-
-

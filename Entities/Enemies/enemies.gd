@@ -11,7 +11,7 @@ var speed: int
 
 func on_hit(value: int):
 	if is_vulnerable:
-		print("enemy hit")
+		#print("enemy hit")
 		
 		health -= value
 		if health <= 0:
@@ -43,3 +43,6 @@ func _on_attack_cooldown_timer_timeout():
 
 func _on_invinsibility_timer_timeout():
 	is_vulnerable = true
+
+
+

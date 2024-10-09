@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://blp06irv52pql"]
+[gd_scene load_steps=8 format=3 uid="uid://blp06irv52pql"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/RustyBot/rusty_bot.gd" id="1_3ckxc"]
 [ext_resource type="PackedScene" uid="uid://dox76m4w0tg01" path="res://Entities/Enemies/enemies.tscn" id="1_la1rf"]
 [ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_c2wwo"]
+[ext_resource type="PackedScene" uid="uid://clr4e4sufsjsh" path="res://Entities/Guns/RustyGun/rusty_gun.tscn" id="4_wd3ij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xhdc"]
-radius = 194.165
+radius = 196.163
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0g5g"]
-radius = 117.154
+radius = 114.158
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6rwt"]
 size = Vector2(24, 24)
@@ -36,13 +37,5 @@ wait_time = 0.2
 [node name="InvinsibilityTimer" parent="Timers" index="1"]
 wait_time = 0.3
 
-[node name="BulletPosition" type="Node2D" parent="." index="5"]
-
-[node name="Marker2D" type="Marker2D" parent="BulletPosition" index="0"]
-position = Vector2(16, -7)
-
-[node name="Marker2D2" type="Marker2D" parent="BulletPosition" index="1"]
-position = Vector2(16, 0)
-
-[node name="Marker2D3" type="Marker2D" parent="BulletPosition" index="2"]
-position = Vector2(16, 8)
+[node name="RustyGun" parent="." index="5" instance=ExtResource("4_wd3ij")]
+position = Vector2(19, 0)
