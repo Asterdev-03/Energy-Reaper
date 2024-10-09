@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5cpxtkgriae"]
+
+[ext_resource type="Script" path="res://Entities/Shields/shield.gd" id="1_j4bp3"]
+
+[node name="Shield" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_j4bp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+disabled = true

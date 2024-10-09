@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1580q83xiv1x"]
+
+[ext_resource type="PackedScene" uid="uid://bd5cpxtkgriae" path="res://Entities/Shields/shield.tscn" id="1_7cnrw"]
+[ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_pmxij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbyjm"]
+size = Vector2(27, 52)
+
+[node name="RustyShield" instance=ExtResource("1_7cnrw")]
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.1, 0.40625)
+texture = ExtResource("2_pmxij")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_bbyjm")
