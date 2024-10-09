@@ -17,7 +17,8 @@ func on_slash_complete():
 
 func _on_slash_area_body_entered(body):
 	if "on_hit" in body:
+		# If hit on enemies, then player gains half the damage energy
 		if body.is_in_group("enemies"):
-			GameManager.energy += int(slash_damage / 2)
+			GameManager.energy += int( float(slash_damage) / 2 )
 		body.on_hit(slash_damage)
-			
+	

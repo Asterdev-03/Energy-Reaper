@@ -25,7 +25,8 @@ enum Types{
 
 
 var weapon_positions: Dictionary
-var weapon_type_index: int = 0
+var current_weapon: Types = Types.GUN
+var prev_weapon: Types = Types.GUN
 
 
 func init(gun_pos: Marker2D, sword_pos: Marker2D, shield_pos: Marker2D):
@@ -43,7 +44,10 @@ func init(gun_pos: Marker2D, sword_pos: Marker2D, shield_pos: Marker2D):
 	
 
 func attack(attack_direction: Vector2):
-	match weapon_type_index:
+	if current_weapon == Types.SHIELD:
+		switch_weapon(prev_weapon)
+	
+	match current_weapon:
 		Types.GUN:
 			if GameManager.energy > 0:
 				weapon_positions[Types.GUN].get_child(0).on_shoot(attack_direction)
@@ -54,11 +58,16 @@ func attack(attack_direction: Vector2):
 
 func switch_weapon(weapon_type: Types):
 	# Hide Current Weapon
-	weapon_positions[weapon_type_index].visible = false
+	weapon_positions[current_weapon].visible = false
 	# Display to changed Weapon
 	weapon_positions[weapon_type].visible = true
 	
-	weapon_type_index = weapon_type
+	# Store previous weapon used before deploying shield
+	if current_weapon != Types.SHIELD:
+		prev_weapon = current_weapon
+	
+	# Set currently using weapon as weapon_type
+	current_weapon = weapon_type
 	
 	# Enable/ Disable shield when deploying or withdrawing shield
 	weapon_positions[Types.SHIELD].get_child(0).deploy_shield(weapon_type == Types.SHIELD)
@@ -74,6 +83,8 @@ func update_weapon():
 	weapon_positions[weapon_type].add_child(weapon)
 	#weapon_positions[weapon_type].call_deferred("add_child", weapon)
 	
+	# No idea why, but when creating new weapon and adding as child it is not connected to
+	# signals in stage scene. Hense needs to update the signals
 	update_signal.emit()
 	
 

@@ -45,6 +45,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("equip"):
 		WeaponManager.update_weapon()
 
+# Switches weapon to provided weapon type and start weapon_change timer
 func switch_weapon_to(type: WeaponManager.Types):
 	WeaponManager.switch_weapon(type)
 	can_change_weapon = false

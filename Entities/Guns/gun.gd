@@ -18,5 +18,6 @@ func on_shoot(attack_direction: Vector2):
 	gun_fired.emit(laser)
 
 # Each gun will have different ways to create laser
+# This is an abstract function
 func create_laser(_attack_direction: Vector2, _starting_position: Vector2) -> Area2D:
 	return null

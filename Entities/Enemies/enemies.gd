@@ -11,8 +11,6 @@ var speed: int
 
 func on_hit(value: int):
 	if is_vulnerable:
-		#print("enemy hit")
-		
 		health -= value
 		if health <= 0:
 			queue_free()

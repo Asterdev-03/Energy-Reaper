@@ -13,17 +13,18 @@ var energy: int = max_energy:
 			# Energy gain logic
 			energy = min(value, max_energy)
 		else:
-			# Energy depletion logic
+			# Player will only be damaged if it is vulnerable
 			if is_player_vulnerable:
+				# Energy depletion logic
 				energy = max(0,value)
-				is_player_vulnerable = false
 				start_player_invinsibility_timer()
 		
 		# Emit stats changed signal to Player UI
 		player_stats_changed.emit()
 
-
+# Start invinsibility timer, where player will not be vulnerable for a while
 func start_player_invinsibility_timer():
+	is_player_vulnerable = false
 	await get_tree().create_timer(player_invinsibility_timer).timeout
 	is_player_vulnerable = true
 

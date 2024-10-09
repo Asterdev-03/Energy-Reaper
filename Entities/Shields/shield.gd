@@ -5,6 +5,7 @@ extends StaticBody2D
 func on_hit(val):
 	GameManager.energy += val / 2
 
+# To# Enable/Disable collision shapes when deploying or withdrawing shield
 func deploy_shield(enable: bool):
 	$CollisionShape2D.disabled = not enable
 	

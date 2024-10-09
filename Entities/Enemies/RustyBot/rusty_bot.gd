@@ -14,7 +14,8 @@ func _process(_delta):
 		
 		var player_direction: Vector2 = (GameManager.player_position - position).normalized()
 		
-		velocity = player_direction * speed * int(is_player_nearby and position.distance_to(GameManager.player_position) > attack_radius)
+		var can_move: bool = is_player_nearby and position.distance_to(GameManager.player_position) > attack_radius
+		velocity = player_direction * speed * int(can_move)
 		
 		move_and_slide()
 		

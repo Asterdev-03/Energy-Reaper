@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	# if laser hits any "body", it damages it by calling its on_hit function
 	if "on_hit" in body:
 		body.on_hit(damage)
 	queue_free()
