@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c157m8ehy7nmi"]
+
+[ext_resource type="Script" path="res://Entities/Swords/sword.gd" id="1_t6ttt"]
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_t6ttt")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+
+[node name="SlashArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlashArea"]
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="SlashArea" to="." method="_on_slash_area_body_entered"]
