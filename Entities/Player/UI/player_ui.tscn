@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://g3tlsgh3rqxp"]
+
+[ext_resource type="Script" path="res://Entities/Player/UI/player_ui.gd" id="1_yjm4a"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_yjm4a")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Energy"
