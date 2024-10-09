@@ -1,11 +1,12 @@
 extends Area2D
 
 @export var speed: int = 200
-@export var damage: int = 10
 
+var damage: int
 var linear_direction: Vector2 = Vector2.ZERO
 
 func _process(delta):
+	# Move laser at the fired direction
 	if linear_direction:
 		position += linear_direction * speed * delta 
 
