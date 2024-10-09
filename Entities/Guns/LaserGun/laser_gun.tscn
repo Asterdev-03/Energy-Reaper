@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c22t7xklbvxjv"]
+
+[ext_resource type="PackedScene" uid="uid://bqtt6liypuey5" path="res://Entities/Guns/gun.tscn" id="1_8u3w1"]
+[ext_resource type="Script" path="res://Entities/Guns/LaserGun/laser_gun.gd" id="2_t7h0i"]
+[ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_wm44e"]
+
+[node name="LaserGun" instance=ExtResource("1_8u3w1")]
+script = ExtResource("2_t7h0i")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.254902, 1, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wm44e")
+
+[node name="Marker2D" type="Marker2D" parent="BulletPosition" index="0"]
+position = Vector2(6, -3)
+
+[node name="Marker2D2" type="Marker2D" parent="BulletPosition" index="1"]
+position = Vector2(6, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="BulletPosition" index="2"]
+position = Vector2(6, 3)

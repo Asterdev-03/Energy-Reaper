@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bqtt6liypuey5"]
+[gd_scene load_steps=2 format=3 uid="uid://bqtt6liypuey5"]
 
-[node name="Gun" type="Node2D"]
+[ext_resource type="Script" path="res://Entities/Guns/gun.gd" id="1_xjcfx"]
+
+[node name="Gun" type="Node2D" groups=["guns"]]
+script = ExtResource("1_xjcfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
