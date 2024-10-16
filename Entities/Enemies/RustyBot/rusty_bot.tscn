@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://blp06irv52pql"]
+[gd_scene load_steps=11 format=3 uid="uid://blp06irv52pql"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/RustyBot/rusty_bot.gd" id="1_3ckxc"]
 [ext_resource type="PackedScene" uid="uid://dox76m4w0tg01" path="res://Entities/Enemies/enemies.tscn" id="1_la1rf"]
 [ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="2_c2wwo"]
 [ext_resource type="PackedScene" uid="uid://clr4e4sufsjsh" path="res://Entities/Guns/RustyGun/rusty_gun.tscn" id="4_wd3ij"]
+[ext_resource type="Script" path="res://Entities/Enemies/RustyBot/States/idle.gd" id="5_afmp4"]
+[ext_resource type="Script" path="res://Entities/Enemies/RustyBot/States/move.gd" id="6_552kb"]
+[ext_resource type="Script" path="res://Entities/Enemies/RustyBot/States/shoot.gd" id="7_p2wm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xhdc"]
 radius = 196.163
@@ -39,3 +42,22 @@ wait_time = 0.3
 
 [node name="RustyGun" parent="." index="5" instance=ExtResource("4_wd3ij")]
 position = Vector2(19, 0)
+
+[node name="idle" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("move_state")]
+script = ExtResource("5_afmp4")
+move_state = NodePath("../move")
+
+[node name="move" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("idle_state", "attack_state")]
+script = ExtResource("6_552kb")
+idle_state = NodePath("../idle")
+attack_state = NodePath("../shoot")
+
+[node name="shoot" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("move_state")]
+script = ExtResource("7_p2wm3")
+move_state = NodePath("../move")
+
+[node name="State" parent="." index="7"]
+offset_left = -16.0
+offset_top = -47.0
+offset_right = 24.0
+offset_bottom = -24.0

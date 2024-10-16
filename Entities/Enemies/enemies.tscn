@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dox76m4w0tg01"]
+[gd_scene load_steps=3 format=3 uid="uid://dox76m4w0tg01"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/enemies.gd" id="1_esmos"]
+[ext_resource type="Script" path="res://Utilities/StateMachine/state_machine.gd" id="2_nda52"]
 
 [node name="Enemies" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -30,6 +31,13 @@ one_shot = true
 
 [node name="InvinsibilityTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_nda52")
+
+[node name="State" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]

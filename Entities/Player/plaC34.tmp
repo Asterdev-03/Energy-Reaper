@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfb7hd634yfti"]
+[gd_scene load_steps=9 format=3 uid="uid://bfb7hd634yfti"]
 
 [ext_resource type="Texture2D" uid="uid://c8nn1h3rglwn0" path="res://icon.svg" id="1_jb63q"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_ni776"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Entities/Player/States/move.gd" id="5_ckhyv"]
 [ext_resource type="Script" path="res://Entities/Player/States/shoot.gd" id="6_53dop"]
 [ext_resource type="Script" path="res://Entities/Player/States/slash.gd" id="7_v0t3n"]
-[ext_resource type="Script" path="res://Entities/Player/States/shielding.gd" id="8_q5shj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rh7u"]
 size = Vector2(28, 28)
@@ -39,44 +38,33 @@ wait_time = 0.2
 one_shot = true
 
 [node name="WeaponChangeTimer" type="Timer" parent="Timers"]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ttl62")
 
-[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "shoot_state", "slash_state", "shielding_state")]
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "shoot_state", "slash_state")]
 script = ExtResource("4_6j2y8")
 move_state = NodePath("../move")
 shoot_state = NodePath("../shoot")
 slash_state = NodePath("../slash")
-shielding_state = NodePath("../shielding")
 
-[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "shoot_state", "slash_state", "shielding_state")]
+[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "shoot_state", "slash_state")]
 script = ExtResource("5_ckhyv")
 idle_state = NodePath("../idle")
 shoot_state = NodePath("../shoot")
 slash_state = NodePath("../slash")
-shielding_state = NodePath("../shielding")
 
-[node name="shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "idle_state", "shielding_state")]
+[node name="shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "idle_state")]
 script = ExtResource("6_53dop")
 move_state = NodePath("../move")
 idle_state = NodePath("../idle")
-shielding_state = NodePath("../shielding")
 
-[node name="slash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "idle_state", "shielding_state")]
+[node name="slash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "idle_state")]
 script = ExtResource("7_v0t3n")
-move_state = NodePath("../move")
-idle_state = NodePath("../idle")
-shielding_state = NodePath("../shielding")
-
-[node name="shielding" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "idle_state", "shoot_state", "slash_state")]
-script = ExtResource("8_q5shj")
-move_state = NodePath("../move")
-idle_state = NodePath("../idle")
-shoot_state = NodePath("../shoot")
-slash_state = NodePath("../slash")
+move_state = NodePath("../idle")
+idle_state = NodePath("../move")
 
 [node name="State" type="Label" parent="."]
 offset_left = -16.0
