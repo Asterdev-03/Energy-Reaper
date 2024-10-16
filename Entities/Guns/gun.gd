@@ -6,7 +6,8 @@ signal gun_fired(laser: Area2D)
 var fire_energy: int
 var fire_damage: int
 
-func on_shoot(attack_direction: Vector2):
+
+func on_shoot(attack_direction: Vector2) -> void:
 	# Get laser starting position
 	var bullet_pos: Node2D = $BulletPosition
 	var laser_start_pos: Vector2 = bullet_pos.get_child(randi() % bullet_pos.get_child_count()).global_position
@@ -16,6 +17,7 @@ func on_shoot(attack_direction: Vector2):
 	
 	# Emit signal to the stage scene to create the laser
 	gun_fired.emit(laser)
+
 
 # Each gun will have different ways to create laser
 # This is an abstract function

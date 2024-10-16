@@ -6,12 +6,12 @@
 
 [node name="BaseCamp" instance=ExtResource("1_7tbat")]
 
-[node name="RustyBot" parent="Entites" index="0" instance=ExtResource("2_4pjxm")]
-position = Vector2(506, 33)
-
-[node name="SlasherBot" parent="Entites" index="1" instance=ExtResource("3_eurfh")]
+[node name="SlasherBot" parent="Entites" index="0" instance=ExtResource("3_eurfh")]
 position = Vector2(-243, 0)
 motion_mode = 1
+
+[node name="RustyBot" parent="Entites" index="1" instance=ExtResource("2_4pjxm")]
+position = Vector2(375, -27)
 
 [node name="Player" parent="." index="4"]
 position = Vector2(113, 116)
